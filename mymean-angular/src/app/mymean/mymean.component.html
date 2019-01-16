@@ -1,0 +1,68 @@
+<br/>
+<div class="container">
+  <div class="row">
+    <h1>Manage Todos</h1>
+  </div>
+
+  <br />
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 ">
+
+      <div class="mymeans " *ngIf="mymeansList">
+        <table class="table table-striped table-dark ">
+          <thead class="h">
+            <tr class="h">
+              <th class="h">Title</th>
+              <th class="h">Description</th>
+              <th class="h">Date</th>
+              <th class="h">Status</th>
+              <th class="h">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="mymean" (dblclick)="editMymean(mymean)" *ngFor="let mymean of mymeansList">
+
+              <ng-container *ngIf="!editMymeans.includes(mymean); else editTD">
+                <td>{{mymean.title}}</td>
+                <td>{{mymean.description}}</td>
+                <td>{{mymean.date | date}}</td>
+                <td>{{mymean.status}}</td>
+              </ng-container>
+
+              <ng-template #editTD>
+                <td><input type="text" name="title" id="title" (keypress)="submitMymean($event, mymean)" [(ngModel)]="mymean.title"
+                    placeholder="Title" class="form-control"></td>
+                <td><input type="text" name="description" id="description" (keypress)="submitMymean($event, mymean)"
+                    [(ngModel)]="mymean.description" placeholder="Description" class="form-control"></td>
+                <td>{{mymean.date | date}}</td>
+                <td>
+                  <input type="text" name="status" id="status" (keypress)="submitMymean($event, mymean)" [(ngModel)]="mymean.status"
+                    placeholder="Status" class="form-control">
+                </td>
+              </ng-template>
+
+              <td class="o">
+                <button class="btn btn-success" (click)="doneMymean(mymean)">
+                  <i class="fa fa-check"></i>
+                </button>
+                <button class="btn btn-primary" (click)="editMymean(mymean)">
+                  <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn btn-danger" (click)="deleteMymean(mymean)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+
+  </div>
+</div>

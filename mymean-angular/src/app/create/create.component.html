@@ -1,0 +1,45 @@
+
+
+<br>
+<div class="container">
+    <div class="row">
+      <h1>Create Todos</h1>
+    </div>
+<br>
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <form>
+        <div class="form-row">
+          <div class="col-md-4">
+            <input type="text" name="title" id="title" [(ngModel)]="newMymean.title" placeholder="Title" class="form-control">
+          </div>
+          <div class="col-md-7">
+            <input name="description" id="description" [(ngModel)]="newMymean.description" placeholder="Short Description"
+              class="form-control" id="description">
+          </div>
+          <div class="col-md-1">
+            <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="mymeans" *ngIf="mymeansList">
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+   
+  <p>Note: View <a routerLink="/mymean">Manage Todos</a></p>
+</div>
